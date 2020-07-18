@@ -1,6 +1,6 @@
-# Shop Venu
+# Food_At_Door
 
-A Flutter Ecommerce application.
+A Flutter Food Ordering application.
 
 ## Features
 

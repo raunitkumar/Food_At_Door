@@ -1,35 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:shopvenue/screens/cart_screen.dart';
+import 'package:shopvenue/provider/cart_provider.dart' show Cart;
+import 'package:provider/provider.dart';
+
 
 class PaymentScreen extends StatelessWidget {
   @override
    Widget build(BuildContext context) {
-    final title = 'Payment';
+      final cart = Provider.of<Cart>(context);
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: ListView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Payment'),
+        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed:(){Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>  CartScreen()));}),
+      ),  
+    body: 
+      ListView(
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Map'),
+              leading: Text('Online Payment:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+              trailing: Icon(Icons.chevron_right),
+              onTap:(){} ,
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.photo_album),
-              title: Text('Album'),
+              leading: Text('Cash on Delivery:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+              trailing: Icon(Icons.chevron_right),
+              onTap:(){} ,
             ),
             Divider(),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('Phone'),
+              ListTile(
+              leading: Text('Pick Up:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+              trailing: Icon(Icons.chevron_right),
+              onTap:(){} ,
             ),
-          ],
+            ],
         ),
-      ),
     );
   }
 }

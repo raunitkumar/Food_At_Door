@@ -25,14 +25,14 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Card(
-            margin: EdgeInsets.all(15),
+            margin: EdgeInsets.fromLTRB(8,12,8,8),
             child: Padding(
               padding: EdgeInsets.all(8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Total',
+                    'Current Bill:',
                     style: TextStyle(fontSize: 20),
                   ),
                   Spacer(),
@@ -43,11 +43,64 @@ class CartScreen extends StatelessWidget {
                     ),
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
+                ],
+              ),
+            ),
+          ),
+
+
+            Card(
+            margin: EdgeInsets.all(8),
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'GST + Taxes:',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Chip(
+                    label: Text('\$ ${(cart.totalAmount/70).toStringAsFixed(2)}',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+
+            Card(
+            margin: EdgeInsets.all(8),
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Net Total:',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Chip(
+                    label: Text('\$ ${(cart.totalAmount+(cart.totalAmount/70)).toStringAsFixed(2)}',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
                   OrderButton(cart)
                 ],
               ),
             ),
           ),
+          Text(
+                    'Your order will be placed once you click on ORDER NOW',
+                    style: TextStyle(fontSize: 14,color: Colors.red),
+                  ),
+
           SizedBox(
             height: 10,
           ),
@@ -101,13 +154,12 @@ class _OrderButtonState extends State<OrderButton> {
               });
               await order.addOrder(
                   widget.cart.items.values.toList(), widget.cart.totalAmount);
-              widget.cart.clearCart();
+                  widget.cart.clearCart();
               setState(() {
                 _isLoading = false;
               });
               Navigator.of(context).pushReplacement(
               CustomRoute(builder: (ctx) => PaymentScreen()));
-            
             },
     );
   }
