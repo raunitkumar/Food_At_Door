@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopvenue/screens/cart_screen.dart';
 import 'package:shopvenue/provider/cart_provider.dart' show Cart;
 import 'package:provider/provider.dart';
+import 'package:shopvenue/screens/final_screen.dart';
 
 
 class PaymentScreen extends StatelessWidget {
@@ -21,19 +22,34 @@ class PaymentScreen extends StatelessWidget {
             ListTile(
               leading: Text('Online Payment:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
               trailing: Icon(Icons.chevron_right),
-              onTap:(){} ,
+              onTap:(){
+                Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => FinalScreen()),
+                );
+              } ,
             ),
             Divider(),
             ListTile(
               leading: Text('Cash on Delivery:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
               trailing: Icon(Icons.chevron_right),
-              onTap:(){} ,
+              onTap:(){
+                Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => FinalScreen()),
+                );
+              } ,
             ),
             Divider(),
               ListTile(
               leading: Text('Pick Up:',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
               trailing: Icon(Icons.chevron_right),
-              onTap:(){} ,
+              onTap:(){
+                 Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => FinalScreen()),
+                );
+              } ,
             ),
             ],
         ),

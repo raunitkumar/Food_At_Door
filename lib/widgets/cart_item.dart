@@ -15,6 +15,7 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
+    
     return Dismissible(
       key: ValueKey(id),
       direction: DismissDirection.endToStart,
@@ -47,7 +48,7 @@ class CartItem extends StatelessWidget {
           color: Colors.red,
           child: Icon(
             Icons.delete,
-            color: Colors.white,
+            color: Colors.red,
             size: 40,
           ),
           alignment: Alignment.centerRight,
@@ -71,10 +72,14 @@ class CartItem extends StatelessWidget {
               ),
             ),
             title: Text(title),
-            subtitle: Text('Total: \$${price * quantity}'),
-            trailing: Text('$quantity x'),
+            subtitle: Text('Total: \$${price.toStringAsFixed(2)}*$quantity = \$${price * quantity}'),
+            trailing: new IconButton(icon: Icon(Icons.delete),
+            onPressed: (){
+             // cart.removeSingleItem(title);
+            },
           ),
         ),
+      ),
       ),
     );
   }

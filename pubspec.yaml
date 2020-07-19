@@ -30,6 +30,7 @@ dependencies:
   flare_splash_screen: ^3.0.1
   firebase_auth: ^0.16.1
   google_sign_in: ^4.5.1
+  fluttertoast: ^7.0.1
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,10 @@ flutter:
     - assets/images/popcorn.png
     - assets/images/coffee2.jpg
     - assets/images/pizza2.jpg
+    - assets/images/ThumbsUp.gif
+    - assets/images/restaurant.jpg
+
+
 
 
 

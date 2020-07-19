@@ -141,11 +141,18 @@ class _OrderButtonState extends State<OrderButton> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : Text('ORDER NOW',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Anton',
-                  color: Theme.of(context).accentColor)),
+          : Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+             borderRadius: BorderRadius.all(Radius.circular(10)),
+              color:Colors.red,
+            ),
+            child: Text('ORDER NOW',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Anton',
+                    color: Colors.yellow)),
+          ),
       onPressed: widget.cart.totalAmount <= 0
           ? null
           : () async {
